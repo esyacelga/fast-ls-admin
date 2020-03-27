@@ -1,5 +1,7 @@
 {
   "name": "black-cat-admin",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
