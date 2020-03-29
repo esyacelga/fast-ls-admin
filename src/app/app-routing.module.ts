@@ -18,6 +18,18 @@ const routes: Routes = [
   {
     path: 'tipo-usuario',
     loadChildren: () => import('./pages/persona/tipo-usuario/tipo-usuario.module').then( m => m.TipoUsuarioPageModule)
+  },
+  {
+    path: 'articulo',
+    loadChildren: () => import('./pages/mensajeria/articulo/articulo.module').then( m => m.ArticuloPageModule)
+  },
+  {
+    path: 'segmento',
+    loadChildren: () => import('./pages/mensajeria/segmento/segmento.module').then( m => m.SegmentoPageModule)
+  },
+  {
+    path: 'tipo-articulo',
+    loadChildren: () => import('./pages/mensajeria/tipo-articulo/tipo-articulo.module').then( m => m.TipoArticuloPageModule)
   }
 ];
 

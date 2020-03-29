@@ -20,12 +20,12 @@ export class AppComponent implements OnInit {
     {
       title: 'Sector',
       url: '/sector',
-      icon: 'paper-plane'
+      icon: 'clipboard'
     },
     {
       title: 'Tipo Usuario',
       url: 'tipo-usuario',
-      icon: 'heart'
+      icon: 'clipboard'
     },
     {
       title: 'Archived',
