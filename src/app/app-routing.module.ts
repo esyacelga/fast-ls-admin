@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'sector',
     loadChildren: () => import('./pages/geo-config/sector/sector.module').then( m => m.SectorPageModule)
+  },
+  {
+    path: 'tipo-usuario',
+    loadChildren: () => import('./pages/persona/tipo-usuario/tipo-usuario.module').then( m => m.TipoUsuarioPageModule)
   }
 ];
 
