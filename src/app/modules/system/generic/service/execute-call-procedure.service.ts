@@ -166,14 +166,14 @@ export class ExecuteCallProcedureService {
                     await this.loading.dismiss('messagesService.loadMessagesOverview');
                     this.presentToast(mensaje, COLOR_TOAST_ERROR);
                 }
-/*
-                if (options.mostrar === 1) {
-                    await this.loading.dismiss('messagesService.loadMessagesOverview');
-                }
-                if (options.mostrar === 1) {
-                    this.presentToast(options.errorMessage, COLOR_TOAST_ERROR);
-                }
-*/
+                /*
+                                if (options.mostrar === 1) {
+                                    await this.loading.dismiss('messagesService.loadMessagesOverview');
+                                }
+                                if (options.mostrar === 1) {
+                                    this.presentToast(options.errorMessage, COLOR_TOAST_ERROR);
+                                }
+                */
                 reject(error);
             });
         });
@@ -186,10 +186,17 @@ export class ExecuteCallProcedureService {
         if (error.error) {
             if (error.error.message) {
                 tituloError = tituloError + error.error.message;
+            } else if (error.message) {
+                tituloError = error.message;
             }
         }
         tituloError = '<p>' + tituloError + '</p>';
-        detalleError = this.lectorError(error.error.errors.errors);
+        if (error.error && error.error.errors && error.error.errors.errors) {
+            detalleError = this.lectorError(error.error.errors.errors);
+        } else {
+            return 'No se puede conectar: ' + tituloError;
+        }
+
         if (this.mostrarMensaje === true) {
             return tituloError + ' </br> ' + detalleError;
         } else {
@@ -232,7 +239,7 @@ export class ExecuteCallProcedureService {
 
             await this.loading.present('messagesService.loadMessagesOverview', messages.loadingMessage);
             if (!genericObject._id) {
-                
+
                 this.restConnection.genericPostRestFull(genericObject, urlRestService).subscribe(async resp => {
                     await this.loading.dismiss('messagesService.loadMessagesOverview');
                     this.presentToast(messages.successMessaje, messages.toastColor);

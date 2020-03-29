@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
       icon: 'mail'
     },
     {
-      title: 'Outbox',
+      title: 'Sector',
       url: '/sector',
       icon: 'paper-plane'
     },
