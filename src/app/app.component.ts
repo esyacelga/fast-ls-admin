@@ -28,14 +28,14 @@ export class AppComponent implements OnInit {
       icon: 'clipboard'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'Segmento',
+      url: 'segmento',
+      icon: 'bookmarks'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'Tipo Articulo',
+      url: 'tipo-articulo',
+      icon: 'bookmarks'
     },
     {
       title: 'Spam',

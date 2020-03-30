@@ -23,7 +23,7 @@ export class TipoUsuarioService {
 
     async listarTodos() {
         const requestOptions = new RequestOptions();
-        return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_TIPO_USUARIO, requestOptions);
+        return (await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_TIPO_USUARIO, requestOptions)) as TipoUsuario[];
     }
 
     async obtenerPorCodigo(codigo) {

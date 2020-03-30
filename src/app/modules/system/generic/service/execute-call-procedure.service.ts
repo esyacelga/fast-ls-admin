@@ -163,8 +163,8 @@ export class ExecuteCallProcedureService {
             }, async error => {
                 const mensaje = this.errorToMessage(error, urlRestService);
                 if (mensaje) {
-                    await this.loading.dismiss('messagesService.loadMessagesOverview');
                     this.presentToast(mensaje, COLOR_TOAST_ERROR);
+                    await this.loading.dismiss('messagesService.loadMessagesOverview');
                 }
                 /*
                                 if (options.mostrar === 1) {

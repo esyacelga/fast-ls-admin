@@ -11,17 +11,14 @@ import {FileTransfer} from '@ionic-native/file-transfer/ngx';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {RestConectionModule} from './modules/system/generic/rest-conection/rest-conection.module';
+import {IonicStorageModule} from '@ionic/storage';
 
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
-    imports: [
-        BrowserModule,
-        RestConectionModule,
-        IonicModule.forRoot(),
-        AppRoutingModule
-    ],
+    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, RestConectionModule, IonicStorageModule.forRoot()],
     providers: [
+        // ComponentModule,
         StatusBar,
         Camera,
         FileTransfer,

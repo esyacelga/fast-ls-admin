@@ -24,7 +24,6 @@ export class TipoUsuarioPage implements OnInit {
     async listarTodos() {
         // @ts-ignore
         this.lstTipoUsuario = await this.svrTipoUsuario.listarTodos();
-        console.log(this.lstTipoUsuario);
     }
 
     ngOnInit() {
