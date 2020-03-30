@@ -73,15 +73,19 @@ export class ArticuloPage implements OnInit {
     }
 
     procesarImagen(options: CameraOptions) {
+        if (this.articulo && this.articulo.articuloSegmento && this.articulo.articuloSegmento._id) {
+            this.camera.getPicture(options).then((imageData) => {
+                // @ts-ignore
+                const img = window.Ionic.WebView.convertFileSrc(imageData);
+                this.articulo.imagenEditada = img;
+                this.svcArticulo.subirImagen(imageData, this.articulo.articuloSegmento._id);
+            }, (err) => {
+                // Handle error
+            });
+        } else {
+            this.util.presentToast('Debe seleccionar el segmento antes de cargar la imagen', COLOR_TOAST_WARNING);
+        }
 
-        this.camera.getPicture(options).then((imageData) => {
-            // @ts-ignore
-            const img = window.Ionic.WebView.convertFileSrc(imageData);
-            this.articulo.imagenEditada = img;
-            this.svcArticulo.subirImagen(imageData, this.articulo.articuloSegmento._id);
-        }, (err) => {
-            // Handle error
-        });
     }
 
 
@@ -107,6 +111,7 @@ export class ArticuloPage implements OnInit {
     async obtenerArticuloTodos() {
         // @ts-ignore
         this.lstArticulo = await this.svcArticulo.obtenerArticulos();
+        this.result = [];
         const map = new Map();
         for (const item of this.lstArticulo) {
             if (!map.has(item.articuloSegmento._id)) {

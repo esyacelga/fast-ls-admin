@@ -1,27 +1,18 @@
-<!--<ion-header>
-  <ion-toolbar color="dark">
-    <ion-title  *ngIf="!articulo" >Articulos</ion-title>
-    <ion-button ion-button color="primary"
-                slot="start"
-                *ngIf="!articulo"
-                (click)="crearNuevo()">Nuevo
-    </ion-button>
-    <ion-button ion-button color="primary" slot="start"
-                *ngIf="articulo"
-                (click)="articulo=null">Cancelar
-    </ion-button>
-    <ion-button ion-button color="success"
-                slot="end"
-                *ngIf="articulo"
-                (click)="registrarNuevo(articulo)">Guardar
-    </ion-button>
-  </ion-toolbar>
-</ion-header>-->
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
 
 <ion-content>
     <ion-list *ngIf="!articulo">
         <ion-item-group *ngFor="let item of result; let i = index">
-            <ion-label><h4>{{item.descripcion | uppercase}}</h4></ion-label>
+            <!--<ion-label><h4>{{item.descripcion | uppercase}}</h4></ion-label>-->
+            <ion-text color="secondary">
+                <h4>{{item.descripcion | uppercase}}</h4>
+            </ion-text>
             <ion-item-sliding *ngFor="let data of lstArticulo | filter:{articuloSegmento: item._id}; let i = index">
                 <ion-item>
                     <ion-label><h5>{{data.descripcion | uppercase}}</h5></ion-label>
@@ -60,6 +51,7 @@
                 expand="block">Cancerlar
             <ion-icon></ion-icon>
         </ion-button>
+
         <ion-item>
             <ion-label>Tipo Artículo</ion-label>
             <ion-select [(ngModel)]="articulo.articuloSegmento.tipoArticulo"
