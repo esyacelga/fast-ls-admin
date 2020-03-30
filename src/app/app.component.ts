@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Platform} from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 
@@ -15,19 +15,25 @@ export class AppComponent implements OnInit {
         {
             title: 'Articulo',
             url: 'articulo',
-            icon: 'mail'
+            icon: 'cube'
+        },
+        {
+            title: 'Rol',
+            url: 'tipo-usuario',
+            icon: 'git-branch'
+        },
+        {
+            title: 'Rol Persona',
+            url: 'rol-persona',
+            icon: 'git-branch'
         },
         {
             title: 'Tipo Articulo',
             url: 'tipo-articulo',
-            icon: 'bookmarks'
+            icon: 'cube'
         },
 
-        {
-            title: 'Tipo Usuario',
-            url: 'tipo-usuario',
-            icon: 'clipboard'
-        },
+
         {
             title: 'Sector',
             url: '/sector',
@@ -37,17 +43,13 @@ export class AppComponent implements OnInit {
             title: 'Segmento',
             url: 'segmento',
             icon: 'bookmarks'
-        },
-        {
-            title: 'Spam',
-            url: '/folder/Spam',
-            icon: 'warning'
         }
     ];
     public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
     constructor(
         private platform: Platform,
+        private navCtrl: NavController,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar
     ) {
@@ -62,9 +64,6 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        const path = window.location.pathname.split('folder/')[1];
-        if (path !== undefined) {
-            this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-        }
+        this.navCtrl.navigateRoot('articulo');
     }
 }
