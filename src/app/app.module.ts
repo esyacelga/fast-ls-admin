@@ -12,13 +12,14 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {RestConectionModule} from './modules/system/generic/rest-conection/rest-conection.module';
 import {IonicStorageModule} from '@ionic/storage';
+import {ComponentModule} from './modules/components/component.module';
 
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, RestConectionModule, IonicStorageModule.forRoot()],
     providers: [
-        // ComponentModule,
+        ComponentModule,
         StatusBar,
         Camera,
         FileTransfer,

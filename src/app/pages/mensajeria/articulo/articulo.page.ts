@@ -6,8 +6,8 @@ import {TipoArticuloClientService} from '../../../services/mensajeria/tipo-artic
 import {ArticuloService} from '../../../services/mensajeria/articulo.service';
 import {SegmentoService} from '../../../services/mensajeria/segmento.service';
 import {Util} from '../../../modules/system/generic/classes/util';
-import {COLOR_TOAST_WARNING} from '../../../modules/system/generic/classes/constant';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import {COLOR_TOAST_WARNING} from '../../../modules/system/generic/classes/constant';
 
 @Component({
     selector: 'app-articulo',
@@ -22,9 +22,9 @@ export class ArticuloPage implements OnInit {
     lstArticulo: Array<ObjetoArticulo>;
     result: Array<ArticuloSegmento> = [];
 
-    constructor(private srvTipoArticulo: TipoArticuloClientService, private svcSegmento: SegmentoService,
+    constructor(private srvTipoArticulo: TipoArticuloClientService,
+                private svcSegmento: SegmentoService,
                 private svcArticulo: ArticuloService,
-                private geolocation: Geolocation,
                 private util: Util,
                 private camera: Camera
     ) {
