@@ -29,7 +29,8 @@ const routes: Routes = [
     },
     {path: 'black', loadChildren: './pages/login/black/black.module#BlackPageModule'},
     {path: 'rol-persona', loadChildren: './pages/login/rol-persona/rol-persona.module#RolPersonaPageModule'},  { path: 'managment', loadChildren: './pages/notificador/managment/managment.module#ManagmentPageModule' },
-  { path: 'notificacion-masiva', loadChildren: './pages/notificador/notificacion-masiva/notificacion-masiva.module#NotificacionMasivaPageModule' }
+  { path: 'notificacion-masiva', loadChildren: './pages/notificador/notificacion-masiva/notificacion-masiva.module#NotificacionMasivaPageModule' },
+  { path: 'dato-persona', loadChildren: './pages/persona/dato-persona/dato-persona.module#DatoPersonaPageModule' }
 
 
 
