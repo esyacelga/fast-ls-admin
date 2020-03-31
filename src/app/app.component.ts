@@ -18,14 +18,24 @@ export class AppComponent implements OnInit {
             icon: 'cube'
         },
         {
+            title: 'Pedidos',
+            url: 'managment',
+            icon: 'calculator'
+        },
+        {
+            title: 'Notificador',
+            url: 'notificacion-masiva',
+            icon: 'notifications'
+        },
+        {
             title: 'Rol',
             url: 'tipo-usuario',
-            icon: 'git-branch'
+            icon: 'body'
         },
         {
             title: 'Rol Persona',
             url: 'rol-persona',
-            icon: 'git-branch'
+            icon: 'body'
         },
         {
             title: 'Tipo Articulo',

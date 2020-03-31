@@ -2,11 +2,7 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
-    {
-        path: '',
-        redirectTo: 'folder/Inbox',
-        pathMatch: 'full'
-    },
+    {path: '', pathMatch: 'full', redirectTo: 'black'},
     {
         path: 'folder/:id',
         loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
@@ -32,7 +28,9 @@ const routes: Routes = [
         loadChildren: () => import('./pages/mensajeria/tipo-articulo/tipo-articulo.module').then(m => m.TipoArticuloPageModule)
     },
     {path: 'black', loadChildren: './pages/login/black/black.module#BlackPageModule'},
-    {path: 'rol-persona', loadChildren: './pages/login/rol-persona/rol-persona.module#RolPersonaPageModule'}
+    {path: 'rol-persona', loadChildren: './pages/login/rol-persona/rol-persona.module#RolPersonaPageModule'},  { path: 'managment', loadChildren: './pages/notificador/managment/managment.module#ManagmentPageModule' },
+  { path: 'notificacion-masiva', loadChildren: './pages/notificador/notificacion-masiva/notificacion-masiva.module#NotificacionMasivaPageModule' }
+
 
 
 ];
