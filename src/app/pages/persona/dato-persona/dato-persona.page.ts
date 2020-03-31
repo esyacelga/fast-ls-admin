@@ -3,7 +3,6 @@ import {ModeloPersona, ModeloTipoUsuarioPersona} from '../../../classes/persona/
 import {Util} from '../../../modules/system/generic/classes/util';
 import {PersonaService} from '../../../services/persona/persona.service';
 import {TipoUsuarioPersonaService} from '../../../services/persona/tipo-usuario-persona.service';
-import {TipoUsuarioService} from '../../../services/persona/tipo-usuario.service';
 import {Sector} from '../../../classes/persona/Sector';
 import {SectorService} from '../../../services/persona/sector.service';
 import {ModalController} from '@ionic/angular';
@@ -22,11 +21,12 @@ export class DatoPersonaPage implements OnInit {
 
     constructor(private svrUtil: Util, private svrPersona: PersonaService,
                 private svrSector: SectorService, private modalCtrl: ModalController,
-                private svrPersonaUsuario: TipoUsuarioPersonaService, private svrTipoUsuario: TipoUsuarioService) {
+                private svrPersonaUsuario: TipoUsuarioPersonaService) {
     }
 
     async selecionPersona(persona: string) {
         this.lstTipoUsuarioPersona = await this.svrPersonaUsuario.obtenerPorPersona(persona);
+        console.log(this.lstTipoUsuarioPersona);
     }
 
     async ngOnInit() {

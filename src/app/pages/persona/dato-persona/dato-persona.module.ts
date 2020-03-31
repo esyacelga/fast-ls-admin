@@ -7,6 +7,9 @@ import {IonicModule} from '@ionic/angular';
 
 import {DatoPersonaPage} from './dato-persona.page';
 import {ComponentModule} from '../../../modules/components/component.module';
+import {PhotoProfilePage} from '../../photo-profile/photo-profile.page';
+import {ImageGeneratorComponent} from '../../../modules/components/image-generator/image-generator.component';
+import {PipesModule} from '../../../modules/pipes/pipes.module';
 
 const routes: Routes = [
     {
@@ -17,13 +20,15 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
+        PipesModule,
         ComponentModule,
         CommonModule,
         FormsModule,
         IonicModule,
         RouterModule.forChild(routes)
     ],
-    declarations: [DatoPersonaPage]
+    declarations: [DatoPersonaPage, PhotoProfilePage, ImageGeneratorComponent]
 })
+
 export class DatoPersonaPageModule {
 }

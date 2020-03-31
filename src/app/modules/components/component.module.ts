@@ -10,6 +10,7 @@ import {PipesModule} from '../pipes/pipes.module';
 import {PedidosComponent} from './pedidos/pedidos.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SolicitudRutaComponent} from './solicitud-ruta/solicitud-ruta.component';
+import {PhotoProfilePage} from '../../pages/photo-profile/photo-profile.page';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import {SolicitudRutaComponent} from './solicitud-ruta/solicitud-ruta.component'
         FormsModule,
         IonicModule,
         ReactiveFormsModule,
-    ]
+    ], entryComponents: [PhotoProfilePage]
 })
 export class ComponentModule {
 }
