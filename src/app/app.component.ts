@@ -23,6 +23,11 @@ export class AppComponent implements OnInit {
             icon: 'calculator'
         },
         {
+            title: 'Persona Adm',
+            url: 'dato-persona',
+            icon: 'body'
+        },
+        {
             title: 'Notificador',
             url: 'notificacion-masiva',
             icon: 'notifications'
