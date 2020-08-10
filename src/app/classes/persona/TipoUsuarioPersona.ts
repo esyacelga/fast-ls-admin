@@ -40,6 +40,7 @@ export class ModeloPersona {
     fechaNacimiento: Date;
     identificacion: string = '';
     correo: string = '';
+    picture: string = '';
     sector: string = '';
     avatar: string = '';
 }
