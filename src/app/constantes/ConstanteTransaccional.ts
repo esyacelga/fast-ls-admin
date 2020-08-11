@@ -6,6 +6,7 @@ export const CRUD_RUTA_SIMPLE = 'ruta/RegistrarSolicitud';
 export const CRUD_ESTADO_RUTA = 'estadoRutaRoute';
 export const CRUD_DISPONIBILIDAD = 'disponibilidadRoute';
 export const CRUD_NOTIFICACION = 'notificacion';
+export const ENVIO_NOTIFICACION_MASIVO = 'notificacion/enviarNotificacionMasiva';
 export const CRUD_NOTIFICACION_ACTUALIZAR = 'notificacion/actualizar';
 export const CRUD_SEGMENTO = 'articuloSegmento';
 export const CRUD_SOLICITUD = 'solicitud';

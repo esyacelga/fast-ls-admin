@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {TipoUsuario} from '../../../classes/persona/TipoUsuario';
 import {NotificacionModel} from '../../../classes/notificacion/NotificacionModel';
-import {TipoUsuarioService} from '../../../services/persona/tipo-usuario.service';
+import {TipoUsuario} from '../../../classes/persona/TipoUsuario';
 import {NotificacionMasivaService} from '../../../services/notificacion/notificacion-masiva.service';
+import {TipoUsuarioService} from '../../../services/persona/tipo-usuario.service';
 
 @Component({
     selector: 'app-notificacion-masiva',
@@ -11,40 +11,42 @@ import {NotificacionMasivaService} from '../../../services/notificacion/notifica
 })
 export class NotificacionMasivaPage implements OnInit {
 
-    lstTipoUsuario: TipoUsuario[] = [];
-    lstNotificacionModel: NotificacionModel[] = [];
-    objNotificacion: NotificacionModel;
+    private lstTipoUsuario: TipoUsuario[] = [];
+    private lstNotificacionModel: NotificacionModel[] = [];
+    private objNotificacion: NotificacionModel;
 
     constructor(private svtTipoUsuario: TipoUsuarioService, private svrNotificacion: NotificacionMasivaService) {
     }
 
-    async ngOnInit() {
+    public async ngOnInit() {
         this.lstTipoUsuario = (await this.svtTipoUsuario.listarTodos()) as TipoUsuario[];
         this.lstNotificacionModel = (await this.svrNotificacion.obtenerTodos()) as NotificacionModel[];
         console.log(this.lstNotificacionModel);
     }
 
-    async crearNuevo() {
+    public async crearNuevo() {
         this.objNotificacion = new NotificacionModel();
     }
 
-    async registrar(notificacion: NotificacionModel) {
+    public async registrar(notificacion: NotificacionModel) {
         await this.svrNotificacion.registar(notificacion);
         this.lstNotificacionModel = (await this.svrNotificacion.obtenerTodos()) as NotificacionModel[];
         this.objNotificacion = undefined;
     }
 
-    async eliminar(notificacion: NotificacionModel) {
+    public async eliminar(notificacion: NotificacionModel) {
         notificacion.estado = 0;
         await this.svrNotificacion.actualizar(notificacion);
         this.lstNotificacionModel = (await this.svrNotificacion.obtenerTodos()) as NotificacionModel[];
 
     }
 
-    async notificar(notificacion: NotificacionModel) {
-        notificacion.estado = 2;
+    public async notificar(notificacion: NotificacionModel) {
+        notificacion.estado = 0;
+        await this.svrNotificacion.enviarNotificacionMasiva(notificacion);
         await this.svrNotificacion.actualizar(notificacion);
-        this.objNotificacion = undefined;
+        this.lstNotificacionModel = (await this.svrNotificacion.obtenerTodos()) as NotificacionModel[];
+
     }
 
 

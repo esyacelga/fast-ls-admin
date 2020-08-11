@@ -51,7 +51,12 @@
     <ion-list *ngIf="!objNotificacion"
     >
         <ion-item-sliding *ngFor="let item of lstNotificacionModel; let i = index">
-            <ion-item >
+            <ion-item-options side="start">
+                <ion-item-option color="success" (click)="notificar(item)">
+                    <ion-icon slot="icon-only" name="paper-plane-outline"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+            <ion-item>
                 <ion-label>
                     <h2>{{item.titulo}}</h2>
                     <p>{{item.mensajeTitulo}}</p>
