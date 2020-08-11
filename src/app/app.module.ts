@@ -13,6 +13,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {RestConectionModule} from './modules/system/generic/rest-conection/rest-conection.module';
 import {IonicStorageModule} from '@ionic/storage';
 import {ComponentModule} from './modules/components/component.module';
+import {OneSignal} from '@ionic-native/onesignal/ngx';
 
 @NgModule({
     declarations: [AppComponent],
@@ -24,6 +25,7 @@ import {ComponentModule} from './modules/components/component.module';
         Camera,
         FileTransfer,
         SplashScreen,
+        OneSignal,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]

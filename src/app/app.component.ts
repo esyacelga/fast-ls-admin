@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NavController, Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
+import {PushNotificationService} from './modules/system/generic/service/push-notification.service';
 
 
 @Component({
@@ -65,6 +66,7 @@ export class AppComponent implements OnInit {
     constructor(
         private platform: Platform,
         private navCtrl: NavController,
+        private svtNotificacion: PushNotificationService,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar
     ) {
@@ -75,10 +77,18 @@ export class AppComponent implements OnInit {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
+            this.iniciaPulginCordova();
         });
     }
 
     ngOnInit() {
-        this.navCtrl.navigateRoot('articulo');
+        this.navCtrl.navigateRoot('managment');
     }
+
+    iniciaPulginCordova() {
+        if (this.platform.is('cordova')) {
+            this.svtNotificacion.configuracionInicial();
+        }
+    }
+
 }
