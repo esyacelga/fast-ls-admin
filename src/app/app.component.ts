@@ -1,14 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController, Platform} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
+import {NavController, Platform} from '@ionic/angular';
 import {PushNotificationService} from './modules/system/generic/service/push-notification.service';
-
 
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',
-    styleUrls: ['app.component.scss']
+    styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
     public selectedIndex = 0;
@@ -16,50 +15,49 @@ export class AppComponent implements OnInit {
         {
             title: 'Articulo',
             url: 'articulo',
-            icon: 'cube'
+            icon: 'cube',
         },
         {
             title: 'Pedidos',
             url: 'managment',
-            icon: 'calculator'
+            icon: 'calculator',
         },
         {
             title: 'Persona Adm',
             url: 'dato-persona',
-            icon: 'body'
+            icon: 'body',
         },
         {
             title: 'Notificador',
             url: 'notificacion-masiva',
-            icon: 'notifications'
+            icon: 'notifications',
         },
         {
             title: 'Rol',
             url: 'tipo-usuario',
-            icon: 'body'
+            icon: 'body',
         },
         {
             title: 'Rol Persona',
             url: 'rol-persona',
-            icon: 'body'
+            icon: 'body',
         },
         {
             title: 'Tipo Articulo',
             url: 'tipo-articulo',
-            icon: 'cube'
+            icon: 'cube',
         },
-
 
         {
             title: 'Sector',
             url: '/sector',
-            icon: 'clipboard'
+            icon: 'clipboard',
         },
         {
             title: 'Segmento',
             url: 'segmento',
-            icon: 'bookmarks'
-        }
+            icon: 'bookmarks',
+        },
     ];
     public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
@@ -68,12 +66,12 @@ export class AppComponent implements OnInit {
         private navCtrl: NavController,
         private svtNotificacion: PushNotificationService,
         private splashScreen: SplashScreen,
-        private statusBar: StatusBar
+        private statusBar: StatusBar,
     ) {
         this.initializeApp();
     }
 
-    initializeApp() {
+   public initializeApp() {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
@@ -81,11 +79,11 @@ export class AppComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.navCtrl.navigateRoot('managment');
     }
 
-    iniciaPulginCordova() {
+    public iniciaPulginCordova() {
         if (this.platform.is('cordova')) {
             this.svtNotificacion.configuracionInicial();
         }

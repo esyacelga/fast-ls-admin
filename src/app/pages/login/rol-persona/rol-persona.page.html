@@ -4,6 +4,7 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
     </ion-toolbar>
+    {{playerID}}
 </ion-header>
 
 <ion-content fullscreen>
@@ -21,20 +22,10 @@
     </ion-list>
 
     <ion-list *ngIf="objPersona">
-
-        <!--<section text-center>
-
-            <header>{{objPersona.correo}}</header>
-            <header>{{objPersona.fechaNacimiento}}</header>
-            <ion-item></ion-item>
-        </section>
-
-        -->
-
         <ion-card>
             <ion-item>
                 <ion-avatar slot="start">
-                    <img [src]="objPersona.picture |domSanitizer" >
+                    <img [src]="objPersona.picture">
                 </ion-avatar>
                 <ion-label>
                     <h3>{{objPersona.apellidos}}{{' '}} {{objPersona.nombres}}</h3>
@@ -42,7 +33,6 @@
                     <p>{{objPersona.fechaNacimiento | date}}</p>
                 </ion-label>
             </ion-item>
-
         </ion-card>
 
         <div *ngFor="let item of lstTipoUsuarioPersona">
@@ -50,8 +40,6 @@
                 <ion-label>{{item.tipoUsuario.descripcion}}</ion-label>
                 <ion-note slot="end" color="primary">{{item.usuario.playerId}}</ion-note>
             </ion-item>
-
-
         </div>
         <section *ngFor="let iterador of lstTipoUsuario">
             <ion-button (click)="crearRol(iterador)" expand="block">ROL {{' '}}{{iterador.descripcion}}</ion-button>
@@ -63,5 +51,13 @@
                 expand="block">Cancelar
             <ion-icon></ion-icon>
         </ion-button>
+        <ion-button
+                type="submit"
+                (click)="setearIdNo tificador()"
+                color="success"
+                expand="block">ACTUALIZAR NOTIFICADOR USUARIO
+            <ion-icon></ion-icon>
+        </ion-button>
+
     </ion-list>
 </ion-content>
