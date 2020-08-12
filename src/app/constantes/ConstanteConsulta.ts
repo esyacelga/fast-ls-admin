@@ -21,3 +21,4 @@ export const OBTENER_TODOS_ARTICULOS = 'articulo/obtenerTodos';
 export const OBTENER_TODOS_DISPONIBILIDAD = 'disponibilidadRoute/obtenerTodos';
 export const OBTENER_TODOS_OBTENER_DISPONIBILIDAD = 'disponibilidadRoute/ObtenerDisponibilidad';
 export const OBTENER_TODOS_POR_TIPO_ARTICULO = 'articuloSegmento/obtenerPorTipoArticulo';
+export const OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_CORREO = 'tipoUsuarioPersona/BuscarPersonaCorreo';

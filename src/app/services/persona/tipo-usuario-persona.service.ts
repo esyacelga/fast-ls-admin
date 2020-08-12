@@ -7,7 +7,7 @@ import {
 } from '../../constantes/ConstanteTransaccional';
 import {Sector} from '../../classes/persona/Sector';
 import {
-    OBTENER_TODOS_PERSONA_TIPO_USUARIO,
+    OBTENER_TODOS_PERSONA_TIPO_USUARIO, OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_CORREO,
     OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_PERSONA,
     OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_TIPO_USUARIO
 } from '../../constantes/ConstanteConsulta';
@@ -16,6 +16,7 @@ import {ExecuteCallProcedureService} from '../../modules/system/generic/service/
 import {Util} from '../../modules/system/generic/classes/util';
 import {RequestOptions} from '../../modules/system/generic/classes/RequestOptions';
 import {COLOR_TOAST_WARNING} from '../../modules/system/generic/classes/constant';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -27,9 +28,20 @@ export class TipoUsuarioPersonaService {
 
     /**
      * Obtiene documento tipo_usuario_persona por id_persona
+     * @param correo
+     */
+    public async obtenerPorCorreo(email: string) {
+        const requestOptions = new RequestOptions();
+        const objTipoUsuarioPersona: ModeloTipoUsuarioPersona =
+            (await this.genericService.servicioRestGenericoGet({correo: email}, OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_CORREO, requestOptions)) as ModeloTipoUsuarioPersona;
+        return objTipoUsuarioPersona;
+    }
+
+    /**
+     * Obtiene documento tipo_usuario_persona por id_persona
      * @param idPersona
      */
-    async obtenerPorPersona(idPersona: string) {
+    public async obtenerPorPersona(idPersona: string) {
         const requestOptions = new RequestOptions();
         const lstTipoPersonaUsuario: ModeloTipoUsuarioPersona[] =
             (await this.genericService.servicioRestGenericoGet({persona: idPersona}, OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_PERSONA, requestOptions)) as ModeloTipoUsuarioPersona[];
@@ -40,14 +52,14 @@ export class TipoUsuarioPersonaService {
      * Obtiene documento tipo_usuario_persona por idtipoUsuario
      * @param idPersona
      */
-    async obtenerPorTipoUsuario(idtipoUsuario: string) {
+    public async obtenerPorTipoUsuario(idtipoUsuario: string) {
         const requestOptions = new RequestOptions();
         const lstTipoPersonaUsuario: ModeloTipoUsuarioPersona[] =
             (await this.genericService.servicioRestGenericoGet({tipoUsuario: idtipoUsuario}, OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_TIPO_USUARIO, requestOptions)) as ModeloTipoUsuarioPersona[];
         return lstTipoPersonaUsuario;
     }
 
-    async registar(tipoUsuarioPersona: TipoUsuarioPersonaDto) {
+    public async registar(tipoUsuarioPersona: TipoUsuarioPersonaDto) {
         const requestOptions = new RequestOptions();
         if (!tipoUsuarioPersona.sector || tipoUsuarioPersona.sector === 'segmentoArticulo.sector') {
             this.svrUtil.presentToast('Debe ingresar el sector', COLOR_TOAST_WARNING);
@@ -76,18 +88,18 @@ export class TipoUsuarioPersonaService {
         return await this.genericService.servicioRestGenericoPost(tipoUsuarioPersona, CRUD_TIPO_USUARIO_PERSONA, requestOptions) as Sector;
     }
 
-    async insertar(tipoUsuarioPersona: TipoUsuarioPersona) {
+    public async insertar(tipoUsuarioPersona: TipoUsuarioPersona) {
         const requestOptions = new RequestOptions();
         return await this.genericService.servicioRestGenericoPost(tipoUsuarioPersona, CRUD_TIPO_USUARIO_PERSONA_INSERTAR, requestOptions) as Sector;
     }
 
-    async actualizarFotografia(idTipoUsuarioPersona) {
+    public async actualizarFotografia(idTipoUsuarioPersona) {
         const requestOptions = new RequestOptions();
         return await this.genericService.servicioRestGenericoPost({_id: idTipoUsuarioPersona}, CRUD_TIPO_USUARIO_PERSONA_ACTUALIZAR_FOTO, requestOptions) as Sector;
     }
 
 
-    async obtenerTipoUsuarioPersonaLista(lstUsuario: string[], tipoUsuario: string) {
+    public async obtenerTipoUsuarioPersonaLista(lstUsuario: string[], tipoUsuario: string) {
         const lstTipoPersonaUsuarioRetorno: ModeloTipoUsuarioPersona[] = [];
         const lstTipoPersonaUsuario: ModeloTipoUsuarioPersona[] = await this.obtenerTodos();
         for (const id of lstUsuario) {
@@ -101,7 +113,7 @@ export class TipoUsuarioPersonaService {
     }
 
 
-    async setearTipoUsuarioPersona(lstPedido: Pedido[], tipoUsuario: string) {
+    public async setearTipoUsuarioPersona(lstPedido: Pedido[], tipoUsuario: string) {
         const lstTipoPersonaUsuario: ModeloTipoUsuarioPersona[] = await this.obtenerTodos();
         for (const pedido of lstPedido) {
             pedido.tipoUsuarioPerona = this.obtenerTipoUsuarioPersona(pedido.usuario, tipoUsuario, lstTipoPersonaUsuario);
@@ -109,7 +121,7 @@ export class TipoUsuarioPersonaService {
         return lstPedido;
     }
 
-    obtenerTipoUsuarioPersona(key: string, tipoUsuario: string, lstTipoPersonaUsuario: ModeloTipoUsuarioPersona[]): ModeloTipoUsuarioPersona {
+    public obtenerTipoUsuarioPersona(key: string, tipoUsuario: string, lstTipoPersonaUsuario: ModeloTipoUsuarioPersona[]): ModeloTipoUsuarioPersona {
         for (const data of lstTipoPersonaUsuario) {
             if (data.tipoUsuario.descripcion === tipoUsuario && data.usuario._id === key) {
                 return data;
@@ -118,7 +130,7 @@ export class TipoUsuarioPersonaService {
     }
 
 
-    async obtenerTodos() {
+    public async obtenerTodos() {
         const requestOptions = new RequestOptions();
         const lstTipoPersonaUsuario: ModeloTipoUsuarioPersona[] = (await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_PERSONA_TIPO_USUARIO, requestOptions)) as ModeloTipoUsuarioPersona[];
         return lstTipoPersonaUsuario;

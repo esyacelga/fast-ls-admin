@@ -1,23 +1,23 @@
-import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AvatarSelectorComponent} from './avatar-selector/avatar-selector.component';
+import {NgModule} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
-import {MapaComponent} from './mapa/mapa.component';
+import {PhotoProfilePage} from '../../pages/photo-profile/photo-profile.page';
+import {PipesModule} from '../pipes/pipes.module';
+import {ArticuloSlideComponent} from './articulo-slide/articulo-slide.component';
+import {AvatarSelectorComponent} from './avatar-selector/avatar-selector.component';
 import {CardImageComponent} from './card-image/card-image.component';
 import {ItemSeleccionadoComponent} from './item-seleccionado/item-seleccionado.component';
-import {ArticuloSlideComponent} from './articulo-slide/articulo-slide.component';
-import {PipesModule} from '../pipes/pipes.module';
+import {MapaComponent} from './mapa/mapa.component';
 import {PedidosComponent} from './pedidos/pedidos.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ProfileComponent} from './profile/profile.component';
 import {SolicitudRutaComponent} from './solicitud-ruta/solicitud-ruta.component';
-import {PhotoProfilePage} from '../../pages/photo-profile/photo-profile.page';
-
 
 @NgModule({
-    declarations: [AvatarSelectorComponent, MapaComponent, SolicitudRutaComponent,
+    declarations: [AvatarSelectorComponent, MapaComponent, SolicitudRutaComponent, ProfileComponent,
         CardImageComponent, ItemSeleccionadoComponent, ArticuloSlideComponent, PedidosComponent],
     exports: [
-        AvatarSelectorComponent, MapaComponent, SolicitudRutaComponent,
+        AvatarSelectorComponent, MapaComponent, SolicitudRutaComponent, ProfileComponent,
         CardImageComponent, ItemSeleccionadoComponent, ArticuloSlideComponent, PedidosComponent
     ],
     imports: [
@@ -26,7 +26,7 @@ import {PhotoProfilePage} from '../../pages/photo-profile/photo-profile.page';
         FormsModule,
         IonicModule,
         ReactiveFormsModule,
-    ], entryComponents: [PhotoProfilePage]
+    ], entryComponents: [PhotoProfilePage],
 })
 export class ComponentModule {
 }

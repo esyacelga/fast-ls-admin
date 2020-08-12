@@ -3,11 +3,16 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
+        <ion-buttons *ngIf="objTipoUsuarioPersona" slot="end" (click)="objTipoUsuarioPersona=undefined">
+            <ion-back-button></ion-back-button>
+            Regresar
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
+
 <ion-content fullscreen>
-    <ion-list [hidden]="objPersona" *ngFor="let persona of lstPersona">
+    <ion-list [hidden]="objTipoUsuarioPersona" *ngFor="let persona of lstPersona">
         <ion-item (click)="selecionPersona(persona._id);objPersona=persona">
             <ion-avatar slot="start">
                 <img [src]="persona.picture|urlSanitizer">
@@ -20,55 +25,7 @@
         </ion-item>
     </ion-list>
 
-    <ion-list *ngIf="objPersona">
-        <ion-item>
-            <ion-label position="floating">Nombre</ion-label>
-            <ion-input class="ion-text-uppercase" [(ngModel)]="objPersona.nombres"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Apellidos</ion-label>
-            <ion-input class="ion-text-uppercase" [(ngModel)]="objPersona.apellidos"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Fecha Nacimiento</ion-label>
-            <ion-datetime [(ngModel)]="objPersona.fechaNacimiento"></ion-datetime>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Correo</ion-label>
-            <ion-input [(ngModel)]="objPersona.correo"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Sector de domicilio</ion-label>
-            <ion-select [(ngModel)]="objPersona.sector"
-                        value="sector._id" okText="Ok" cancelText="Cancelar">
-                <ion-select-option *ngFor="let sector  of lstSectores"
-                                   value="{{sector._id}}">{{sector.descripcion}}
-                </ion-select-option>
-            </ion-select>
-        </ion-item>
-        <ion-row>
-            <ion-col>
-                <ion-button
-                        type="submit"
-                        (click)="abrirModal()"
-                        color="primary"
-                        expand="block">Actualizar Foto Perfil
-
-                </ion-button>
-                <ion-button
-                        type="submit"
-                        color="tertiary"
-                        expand="block">Actualizar Perfil
-                </ion-button>
-
-            </ion-col>
-        </ion-row>
-        <ion-button
-                type="submit"
-                (click)="objPersona=null"
-                color="warning"
-                expand="block">Cancelar
-            <ion-icon></ion-icon>
-        </ion-button>
-    </ion-list>
+    <div *ngIf="objTipoUsuarioPersona">
+        <app-profile></app-profile>
+    </div>
 </ion-content>

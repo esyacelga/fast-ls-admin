@@ -1,12 +1,12 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {FileTransfer} from '@ionic-native/file-transfer/ngx';
-import {Articulo} from '../../classes/mensajeria/Articulo';
 import {environment} from '../../../environments/environment.prod';
-import {ExecuteCallProcedureService} from '../../modules/system/generic/service/execute-call-procedure.service';
-import {RequestOptions} from '../../modules/system/generic/classes/RequestOptions';
-import {CRUD_ARTICULO, URL_CRUD_ARTICULO_IMAGE_UPLOAD} from '../../constantes/ConstanteTransaccional';
+import {Articulo} from '../../classes/mensajeria/Articulo';
 import {OBTENER_TODOS_ARTICULOS} from '../../constantes/ConstanteConsulta';
+import {CRUD_ARTICULO, URL_CRUD_ARTICULO_IMAGE_UPLOAD} from '../../constantes/ConstanteTransaccional';
 import {ImageObject} from '../../modules/system/generic/classes/ImageObject';
+import {RequestOptions} from '../../modules/system/generic/classes/RequestOptions';
+import {ExecuteCallProcedureService} from '../../modules/system/generic/service/execute-call-procedure.service';
 
 
 const URL = environment.url;
@@ -15,20 +15,20 @@ const URL = environment.url;
     providedIn: 'root'
 })
 export class ArticuloService {
-    nuevoArticulo = new EventEmitter<Articulo>();
+    public nuevoArticulo = new EventEmitter<Articulo>();
 
     constructor(private genericService: ExecuteCallProcedureService, private fileTransfer: FileTransfer) {
 
     }
 
-    async registarArticulo(segmento: Articulo) {
+    public async registarArticulo(segmento: Articulo) {
         const requestOptions = new RequestOptions();
         const data = await this.genericService.servicioRestGenericoPost(segmento, CRUD_ARTICULO, requestOptions) as Articulo;
         return data;
     }
 
 
-    async obtenerArticulos() {
+    public async obtenerArticulos() {
         const requestOptions = new RequestOptions();
         return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_ARTICULOS, requestOptions);
     }
@@ -39,7 +39,7 @@ export class ArticuloService {
      * @param img
      * @param path
      */
-    async subirImagen(img: string, path: string) {
+    public async subirImagen(img: string, path: string) {
         const dataImage = new ImageObject(img, path);
         const requestOptions = new RequestOptions();
         requestOptions.successMessaje = 'Archivo cargado exitosamente';

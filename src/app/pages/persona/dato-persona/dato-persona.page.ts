@@ -7,6 +7,7 @@ import {Sector} from '../../../classes/persona/Sector';
 import {SectorService} from '../../../services/persona/sector.service';
 import {ModalController} from '@ionic/angular';
 import {PhotoProfilePage} from '../../photo-profile/photo-profile.page';
+import {StorageAppService} from '../../../modules/system/generic/service/storage-app.service';
 
 @Component({
     selector: 'app-dato-persona',
@@ -14,27 +15,35 @@ import {PhotoProfilePage} from '../../photo-profile/photo-profile.page';
     styleUrls: ['./dato-persona.page.scss'],
 })
 export class DatoPersonaPage implements OnInit {
-    objPersona: ModeloPersona;
-    lstPersona: ModeloPersona[];
-    lstSectores: Sector[];
-    lstTipoUsuarioPersona: ModeloTipoUsuarioPersona[];
+    public objPersona: ModeloPersona;
+    public lstPersona: ModeloPersona[];
+    public lstSectores: Sector[];
+    public modeloPersonaTipoUsuario: ModeloTipoUsuarioPersona;
+    public lstTipoUsuarioPersona: ModeloTipoUsuarioPersona[];
+    public objTipoUsuarioPersona: ModeloTipoUsuarioPersona;
 
-    constructor(private svrUtil: Util, private svrPersona: PersonaService,
+    constructor(private svrUtil: Util,
+                private svrPersona: PersonaService,
+                private svtTipoUsuariPersona: TipoUsuarioPersonaService,
+                private svrStorage: StorageAppService,
                 private svrSector: SectorService, private modalCtrl: ModalController,
                 private svrPersonaUsuario: TipoUsuarioPersonaService) {
     }
 
-    async selecionPersona(persona: string) {
+    public async selecionPersona(persona: string) {
         this.lstTipoUsuarioPersona = await this.svrPersonaUsuario.obtenerPorPersona(persona);
-        console.log(this.lstTipoUsuarioPersona);
+        if (this.lstTipoUsuarioPersona.length > 0 && this.lstTipoUsuarioPersona[0].persona && this.lstTipoUsuarioPersona[0].persona.correo) {
+            this.objTipoUsuarioPersona = (await this.svtTipoUsuariPersona.obtenerPorCorreo(this.lstTipoUsuarioPersona[0].persona.correo) as ModeloTipoUsuarioPersona);
+            this.svrStorage.setStorageObject(this.objTipoUsuarioPersona, 'usuario');
+        }
     }
 
-    async ngOnInit() {
+    public async ngOnInit() {
         this.lstPersona = await this.svrPersona.obtenerTodos();
         this.lstSectores = await this.svrSector.obtenerSectores();
     }
 
-    async abrirModal() {
+    public async abrirModal() {
         const modal = await this.modalCtrl.create({
             component: PhotoProfilePage,
             componentProps: {title: 's', tipoError: 's', mensaje: 'mensajeError'}
