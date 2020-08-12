@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import {ModeloTipoUsuarioPersona} from '../../classes/persona/TipoUsuarioPersona';
-import {TipoUsuarioPersonaService} from '../../services/persona/tipo-usuario-persona.service';
 import {StorageAppService} from '../../modules/system/generic/service/storage-app.service';
+import {TipoUsuarioPersonaService} from '../../services/persona/tipo-usuario-persona.service';
 
 @Component({
     selector: 'app-photo-profile',
@@ -10,26 +10,26 @@ import {StorageAppService} from '../../modules/system/generic/service/storage-ap
     styleUrls: ['./photo-profile.page.scss'],
 })
 export class PhotoProfilePage implements OnInit {
-    pathFotografia: string;
-    nombreImagen: string;
+    public pathFotografia: string;
+    public nombreImagen: string;
 
     constructor(private modal: ModalController, private svrStorage: StorageAppService,
                 private svrTipoUsuarioPersona: TipoUsuarioPersonaService) {
     }
 
-    async ngOnInit() {
+    public async ngOnInit() {
         const tipoUsuarioPersona: ModeloTipoUsuarioPersona =
             (await this.svrStorage.loadStorageObject('usuario')) as ModeloTipoUsuarioPersona;
         this.pathFotografia = tipoUsuarioPersona._id;
         this.nombreImagen = tipoUsuarioPersona.imagen;
     }
 
-    async guardarFotografia() {
+    public async guardarFotografia() {
         await this.svrTipoUsuarioPersona.actualizarFotografia(this.pathFotografia);
         this.modal.dismiss();
     }
 
-    salirModal() {
+    public salirModal() {
         this.modal.dismiss();
     }
 }

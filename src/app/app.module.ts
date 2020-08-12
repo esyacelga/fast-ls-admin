@@ -30,7 +30,7 @@ import {PhotoProfilePageModule} from './pages/photo-profile/photo-profile.module
         OneSignal,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 }

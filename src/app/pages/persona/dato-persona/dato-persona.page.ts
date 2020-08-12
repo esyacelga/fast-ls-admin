@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
+import {ModalController} from '@ionic/angular';
+import {Sector} from '../../../classes/persona/Sector';
 import {ModeloPersona, ModeloTipoUsuarioPersona} from '../../../classes/persona/TipoUsuarioPersona';
 import {Util} from '../../../modules/system/generic/classes/util';
-import {PersonaService} from '../../../services/persona/persona.service';
-import {TipoUsuarioPersonaService} from '../../../services/persona/tipo-usuario-persona.service';
-import {Sector} from '../../../classes/persona/Sector';
-import {SectorService} from '../../../services/persona/sector.service';
-import {ModalController} from '@ionic/angular';
-import {PhotoProfilePage} from '../../photo-profile/photo-profile.page';
 import {StorageAppService} from '../../../modules/system/generic/service/storage-app.service';
+import {PersonaService} from '../../../services/persona/persona.service';
+import {SectorService} from '../../../services/persona/sector.service';
+import {TipoUsuarioPersonaService} from '../../../services/persona/tipo-usuario-persona.service';
+import {PhotoProfilePage} from '../../photo-profile/photo-profile.page';
 
 @Component({
     selector: 'app-dato-persona',
@@ -26,7 +26,8 @@ export class DatoPersonaPage implements OnInit {
                 private svrPersona: PersonaService,
                 private svtTipoUsuariPersona: TipoUsuarioPersonaService,
                 private svrStorage: StorageAppService,
-                private svrSector: SectorService, private modalCtrl: ModalController,
+                private svrSector: SectorService,
+                private modalCtrl: ModalController,
                 private svrPersonaUsuario: TipoUsuarioPersonaService) {
     }
 
