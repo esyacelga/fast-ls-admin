@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {FileTransfer} from '@ionic-native/file-transfer/ngx';
 import {environment} from '../../../environments/environment.prod';
 import {Articulo} from '../../classes/mensajeria/Articulo';
@@ -15,7 +15,6 @@ const URL = environment.url;
     providedIn: 'root'
 })
 export class ArticuloService {
-    public nuevoArticulo = new EventEmitter<Articulo>();
 
     constructor(private genericService: ExecuteCallProcedureService, private fileTransfer: FileTransfer) {
 
@@ -27,18 +26,11 @@ export class ArticuloService {
         return data;
     }
 
-
     public async obtenerArticulos() {
         const requestOptions = new RequestOptions();
         return await this.genericService.servicioRestGenericoGet({}, OBTENER_TODOS_ARTICULOS, requestOptions);
     }
 
-
-    /**
-     * Servicio de envio de imagenes al servidor
-     * @param img
-     * @param path
-     */
     public async subirImagen(img: string, path: string) {
         const dataImage = new ImageObject(img, path);
         const requestOptions = new RequestOptions();

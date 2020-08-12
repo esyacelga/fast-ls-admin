@@ -40,7 +40,7 @@
                 type="submit"
                 (click)="registrarNuevo(articulo)"
                 color="success"
-                expand="block">Guardar
+                expand="block">Guardar.
             <ion-icon></ion-icon>
         </ion-button>
         <ion-button
@@ -83,7 +83,14 @@
             <ion-label position="floating">Costo por unidad</ion-label>
             <ion-input type="number" [(ngModel)]="articulo.unidadCosto"></ion-input>
         </ion-item>
-
+        <ion-item>
+            <ion-label>Es servicio</ion-label>
+            <ion-checkbox slot="end" [(ngModel)]="articulo.esServicio"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+            <ion-label>Permite Comentar</ion-label>
+            <ion-checkbox slot="end" [(ngModel)]="articulo.permiteComentar"></ion-checkbox>
+        </ion-item>
 
         <ion-row>
             <ion-col size="6">

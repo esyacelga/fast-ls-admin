@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {ArticuloSegmento} from '../../../classes/mensajeria/articulo-segmento';
+import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {Articulo, ObjetoArticulo} from '../../../classes/mensajeria/Articulo';
+import {ArticuloSegmento} from '../../../classes/mensajeria/articulo-segmento';
 import {TipoArticulo} from '../../../classes/mensajeria/tipo-articulo';
-import {TipoArticuloClientService} from '../../../services/mensajeria/tipo-articulo-client.service';
+import {COLOR_TOAST_WARNING} from '../../../modules/system/generic/classes/constant';
+import {Util} from '../../../modules/system/generic/classes/util';
 import {ArticuloService} from '../../../services/mensajeria/articulo.service';
 import {SegmentoService} from '../../../services/mensajeria/segmento.service';
-import {Util} from '../../../modules/system/generic/classes/util';
-import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
-import {COLOR_TOAST_WARNING} from '../../../modules/system/generic/classes/constant';
+import {TipoArticuloClientService} from '../../../services/mensajeria/tipo-articulo-client.service';
 
 @Component({
     selector: 'app-articulo',
@@ -16,63 +16,62 @@ import {COLOR_TOAST_WARNING} from '../../../modules/system/generic/classes/const
 })
 export class ArticuloPage implements OnInit {
 
-    articulo: ObjetoArticulo;
-    lstSegmento: Array<ArticuloSegmento>;
-    lstTipoArticulo: Array<TipoArticulo>;
-    lstArticulo: Array<ObjetoArticulo>;
-    result: Array<ArticuloSegmento> = [];
+    public articulo: ObjetoArticulo;
+    public lstSegmento: Array<ArticuloSegmento>;
+    public lstTipoArticulo: Array<TipoArticulo>;
+    public lstArticulo: Array<ObjetoArticulo>;
+    public result: Array<ArticuloSegmento> = [];
 
     constructor(private srvTipoArticulo: TipoArticuloClientService,
                 private svcSegmento: SegmentoService,
                 private svcArticulo: ArticuloService,
                 private util: Util,
-                private camera: Camera
+                private camera: Camera,
     ) {
     }
 
-    async ngOnInit() {
+    public async ngOnInit() {
         await this.obtenerArticuloTodos();
         await this.obtenerTipoArticulo();
         await this.obtenerSegementos();
     }
 
-
-    async obtenerSegementos() {
+    public async obtenerSegementos() {
         // @ts-ignore
         this.lstSegmento = await this.svcSegmento.obtenerSegmentos();
     }
 
-    async obtenerTipoArticulo() {
+    public async obtenerTipoArticulo() {
         // @ts-ignore
         this.lstTipoArticulo = await this.srvTipoArticulo.obtenerTipoArticulos();
     }
 
-    camara() {
+    public camara() {
         const options: CameraOptions = {
             quality: 60,
             destinationType: this.camera.DestinationType.FILE_URI,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE,
             correctOrientation: true,
-            sourceType: this.camera.PictureSourceType.CAMERA
+            sourceType: this.camera.PictureSourceType.CAMERA,
         };
         console.log('Entro a camara procesar camara');
         this.procesarImagen(options);
     }
 
-    libreria() {
+    public libreria() {
         const options: CameraOptions = {
             quality: 60,
             destinationType: this.camera.DestinationType.FILE_URI,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE,
             correctOrientation: true,
-            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
         };
         this.procesarImagen(options);
     }
 
-    procesarImagen(options: CameraOptions) {
+    public procesarImagen(options: CameraOptions) {
         if (this.articulo && this.articulo.articuloSegmento && this.articulo.articuloSegmento._id) {
             this.camera.getPicture(options).then((imageData) => {
                 // @ts-ignore
@@ -88,13 +87,11 @@ export class ArticuloPage implements OnInit {
 
     }
 
-
-    crearNuevo() {
+    public crearNuevo() {
         this.articulo = new ObjetoArticulo();
     }
 
-
-    async registrarNuevo(objGuardar) {
+    public async registrarNuevo(objGuardar) {
         // @ts-ignore}
         objGuardar.estado = 1;
         if (objGuardar.articuloSegmento === undefined || objGuardar.articuloSegmento._id === undefined) {
@@ -107,8 +104,7 @@ export class ArticuloPage implements OnInit {
         this.articulo = null;
     }
 
-
-    async obtenerArticuloTodos() {
+    public async obtenerArticuloTodos() {
         // @ts-ignore
         this.lstArticulo = await this.svcArticulo.obtenerArticulos();
         this.result = [];
@@ -122,11 +118,9 @@ export class ArticuloPage implements OnInit {
                 this.result.push(articuloSegmento);
             }
         }
-        console.log(this.result);
     }
 
-
-    async eliminar(articulo: Articulo) {
+    public async eliminar(articulo: Articulo) {
         articulo.estado = 0;
         await this.svcArticulo.registarArticulo(articulo);
         this.obtenerArticuloTodos();
