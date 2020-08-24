@@ -11,9 +11,9 @@ import {TipoUsuarioService} from '../../../services/persona/tipo-usuario.service
 })
 export class NotificacionMasivaPage implements OnInit {
 
-    public lstTipoUsuario: TipoUsuario[] = [];
-    public lstNotificacionModel: NotificacionModel[] = [];
-    public objNotificacion: NotificacionModel;
+    private lstTipoUsuario: TipoUsuario[] = [];
+    private lstNotificacionModel: NotificacionModel[] = [];
+    private objNotificacion: NotificacionModel;
 
     constructor(private svtTipoUsuario: TipoUsuarioService, private svrNotificacion: NotificacionMasivaService) {
     }

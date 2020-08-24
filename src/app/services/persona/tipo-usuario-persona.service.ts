@@ -1,29 +1,24 @@
 import {Injectable} from '@angular/core';
-import {Pedido} from '../../classes/mensajeria/Pedido';
-import {Sector} from '../../classes/persona/Sector';
-import {
-    ModeloTipoUsuarioPersona,
-    TipoUsuarioPersona,
-    TipoUsuarioPersonaDto
-} from '../../classes/persona/TipoUsuarioPersona';
-import {
-    OBTENER_TODOS_PERSONA_TIPO_USUARIO,
-    OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_CORREO,
-    OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_PERSONA,
-    OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_TIPO_USUARIO
-} from '../../constantes/ConstanteConsulta';
+import {ModeloTipoUsuarioPersona, TipoUsuarioPersona, TipoUsuarioPersonaDto} from '../../classes/persona/TipoUsuarioPersona';
 import {
     CRUD_TIPO_USUARIO_PERSONA,
     CRUD_TIPO_USUARIO_PERSONA_ACTUALIZAR_FOTO,
     CRUD_TIPO_USUARIO_PERSONA_INSERTAR
 } from '../../constantes/ConstanteTransaccional';
-import {COLOR_TOAST_WARNING} from '../../modules/system/generic/classes/constant';
-import {RequestOptions} from '../../modules/system/generic/classes/RequestOptions';
-import {Util} from '../../modules/system/generic/classes/util';
+import {Sector} from '../../classes/persona/Sector';
+import {
+    OBTENER_TODOS_PERSONA_TIPO_USUARIO, OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_CORREO,
+    OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_PERSONA,
+    OBTENER_TODOS_PERSONA_TIPO_USUARIO_POR_TIPO_USUARIO
+} from '../../constantes/ConstanteConsulta';
+import {Pedido} from '../../classes/mensajeria/Pedido';
 import {ExecuteCallProcedureService} from '../../modules/system/generic/service/execute-call-procedure.service';
+import {Util} from '../../modules/system/generic/classes/util';
+import {RequestOptions} from '../../modules/system/generic/classes/RequestOptions';
+import {COLOR_TOAST_WARNING} from '../../modules/system/generic/classes/constant';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: 'root'
 })
 export class TipoUsuarioPersonaService {
 
@@ -128,7 +123,7 @@ export class TipoUsuarioPersonaService {
 
     public obtenerTipoUsuarioPersona(key: string, tipoUsuario: string, lstTipoPersonaUsuario: ModeloTipoUsuarioPersona[]): ModeloTipoUsuarioPersona {
         for (const data of lstTipoPersonaUsuario) {
-            if (data.tipoUsuario && data.usuario && data.tipoUsuario.descripcion === tipoUsuario && data.usuario._id === key) {
+            if (data.tipoUsuario.descripcion === tipoUsuario && data.usuario._id === key) {
                 return data;
             }
         }
