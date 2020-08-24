@@ -18,7 +18,8 @@
                 <img [src]="item.pedido.tipoUsuarioPerona.persona.picture|urlSanitizer">
             </ion-avatar>
             <ion-label>
-                <h2>{{item.pedido.tipoUsuarioPerona.persona.apellidos}}{{' '}}{{item.pedido.tipoUsuarioPerona.persona.nombres}}</h2>
+                <h2>{{item.pedido.tipoUsuarioPerona.persona.apellidos}}{{' '}}
+                    {{item.pedido.tipoUsuarioPerona.persona.nombres}}{{' '}}{{item.pedido.tipoUsuarioPerona.persona}} </h2>
                 <h3>Valor Total: {{' '}}{{item.total.toFixed(2)}}</h3>
                 <p> # {{' '}}{{item.pedido._id}}</p>
             </ion-label>
@@ -81,6 +82,7 @@
         </ion-item>
     </ion-list>
     <ion-item-group *ngIf="contenedor">
+
         <ion-item-sliding *ngFor="let item of contenedor.pedido.solicitudDetalle;let i = index">
             <ion-item>
                 <ion-badge color="secondary">{{(item.cantidad * item.unidadCosto).toFixed(2)}}</ion-badge>
@@ -88,7 +90,7 @@
                 <div slot="end">{{item.cantidad}}</div>
             </ion-item>
             <ion-item-options side="end">
-                <ion-item-option color="danger" (click)="eliminar(i)">
+                <ion-item-option color="danger">
                     <ion-icon slot="icon-only" name="trash"></ion-icon>
                 </ion-item-option>
             </ion-item-options>

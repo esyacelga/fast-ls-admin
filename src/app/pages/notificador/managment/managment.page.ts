@@ -20,14 +20,14 @@ export class ManagmentPage implements OnInit {
 
     }
 
-    async actualiarPedido(estado: number, pedido: PedidoResumen) {
+    public async actualiarPedido(estado: number, pedido: PedidoResumen) {
         const solicitud: SolcitudCabeceraModel = new SolcitudCabeceraModel(pedido.pedido._id, pedido.usuario, estado);
         await this.svrSolicitud.actualizarSolicitud(solicitud);
         this.contenedor = null;
         this.ngOnInit();
     }
 
-    async ngOnInit() {
+    public async ngOnInit() {
         this.lstPedidoRemen = [];
         this.lstPedido = await this.svrSolicitud.obtenerPedidos();
         this.lstPedido =

@@ -9,7 +9,7 @@ export class BlackPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }

@@ -2,7 +2,6 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
-import {PhotoProfilePage} from '../../pages/photo-profile/photo-profile.page';
 import {PipesModule} from '../pipes/pipes.module';
 import {ArticuloSlideComponent} from './articulo-slide/articulo-slide.component';
 import {AvatarSelectorComponent} from './avatar-selector/avatar-selector.component';
@@ -26,7 +25,7 @@ import {SolicitudRutaComponent} from './solicitud-ruta/solicitud-ruta.component'
         FormsModule,
         IonicModule,
         ReactiveFormsModule,
-    ], entryComponents: [PhotoProfilePage],
+    ], entryComponents: [],
 })
 export class ComponentModule {
 }
