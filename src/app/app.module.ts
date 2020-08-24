@@ -2,18 +2,18 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
-import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
-import {SplashScreen} from '@ionic-native/splash-screen/ngx';
-import {StatusBar} from '@ionic-native/status-bar/ngx';
 import {Camera} from '@ionic-native/camera/ngx';
 import {FileTransfer} from '@ionic-native/file-transfer/ngx';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
+import {StatusBar} from '@ionic-native/status-bar/ngx';
+import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 
-import {AppComponent} from './app.component';
-import {AppRoutingModule} from './app-routing.module';
-import {RestConectionModule} from './modules/system/generic/rest-conection/rest-conection.module';
-import {IonicStorageModule} from '@ionic/storage';
-import {ComponentModule} from './modules/components/component.module';
 import {OneSignal} from '@ionic-native/onesignal/ngx';
+import {IonicStorageModule} from '@ionic/storage';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {ComponentModule} from './modules/components/component.module';
+import {RestConectionModule} from './modules/system/generic/rest-conection/rest-conection.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -26,7 +26,7 @@ import {OneSignal} from '@ionic-native/onesignal/ngx';
         FileTransfer,
         SplashScreen,
         OneSignal,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
     ],
     bootstrap: [AppComponent],
 })

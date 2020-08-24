@@ -11,13 +11,12 @@ import {MapaComponent} from './mapa/mapa.component';
 import {PedidosComponent} from './pedidos/pedidos.component';
 import {ProfileComponent} from './profile/profile.component';
 import {SolicitudRutaComponent} from './solicitud-ruta/solicitud-ruta.component';
-import {ImagenEditorComponent} from './imagen-editor/imagen-editor.component';
 
 @NgModule({
-    declarations: [AvatarSelectorComponent, MapaComponent, SolicitudRutaComponent, ProfileComponent, ImagenEditorComponent,
+    declarations: [AvatarSelectorComponent, MapaComponent, SolicitudRutaComponent, ProfileComponent,
         CardImageComponent, ItemSeleccionadoComponent, ArticuloSlideComponent, PedidosComponent],
     exports: [
-        AvatarSelectorComponent, MapaComponent, SolicitudRutaComponent, ProfileComponent, ImagenEditorComponent,
+        AvatarSelectorComponent, MapaComponent, SolicitudRutaComponent, ProfileComponent,
         CardImageComponent, ItemSeleccionadoComponent, ArticuloSlideComponent, PedidosComponent
     ],
     imports: [

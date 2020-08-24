@@ -6,7 +6,7 @@ export interface RespuestaPosts {
 }
 
 export interface Post {
-  img?: string[];
+  imgs?: string[];
   _id?: string;
   mensaje?: string;
   coords?: string;

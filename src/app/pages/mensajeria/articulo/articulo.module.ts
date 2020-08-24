@@ -8,13 +8,11 @@ import {ArticuloPageRoutingModule} from './articulo-routing.module';
 
 import {ArticuloPage} from './articulo.page';
 import {PipesModule} from '../../../modules/pipes/pipes.module';
-import {ComponentModule} from '../../../modules/components/component.module';
 
 @NgModule({
     imports: [
         PipesModule,
         CommonModule,
-        ComponentModule,
         FormsModule,
         IonicModule,
         ArticuloPageRoutingModule
@@ -22,6 +20,4 @@ import {ComponentModule} from '../../../modules/components/component.module';
     declarations: [ArticuloPage]
 })
 export class ArticuloPageModule {
-
-
 }

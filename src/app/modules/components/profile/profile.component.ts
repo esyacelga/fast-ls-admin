@@ -7,7 +7,6 @@ import {ModeloPersona, ModeloTipoUsuarioPersona, TipoUsuarioPersonaDto} from '..
 import {COLOR_TOAST_DARK, COLOR_TOAST_WARNING} from '../../system/generic/classes/constant';
 import {Util} from '../../system/generic/classes/util';
 import {StorageAppService} from '../../system/generic/service/storage-app.service';
-
 import {PersonaService} from '../../../services/persona/persona.service';
 import {SectorService} from '../../../services/persona/sector.service';
 import {TipoUsuarioPersonaService} from '../../../services/persona/tipo-usuario-persona.service';
@@ -43,7 +42,6 @@ export class ProfileComponent implements OnInit {
         this.imagen = this.modeloPersonaTipoUsuario.imagen;
         this.ruta = this.modeloPersonaTipoUsuario._id;
     }
-
 
 
     public construirFormRegistro() {

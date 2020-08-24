@@ -43,4 +43,5 @@ export class DatoPersonaPage implements OnInit {
         this.lstSectores = await this.svrSector.obtenerSectores();
     }
 
+
 }

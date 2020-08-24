@@ -1,30 +1,30 @@
 <ion-header [translucent]="true">
-    <ion-toolbar color="dark">
+    <ion-toolbar>
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content color="dark">
+<ion-content>
     <ion-list *ngIf="objNotificacion">
-        <ion-item  color="dark">
+        <ion-item >
             <ion-label position="floating">Titulo</ion-label>
             <ion-input [(ngModel)]="objNotificacion.titulo"></ion-input>
-        </ion-item >
-        <ion-item  color="dark">
+        </ion-item>
+        <ion-item >
             <ion-label position="floating">Mensaje Titulo</ion-label>
             <ion-input [(ngModel)]="objNotificacion.mensajeTitulo"></ion-input>
         </ion-item>
-        <ion-item color="dark">
+        <ion-item >
             <ion-label position="floating">key</ion-label>
             <ion-input [(ngModel)]="objNotificacion.key"></ion-input>
         </ion-item>
 
-        <ion-item color="dark">
+        <ion-item >
             <ion-label position="floating">Contenido Mensaje</ion-label>
             <ion-input [(ngModel)]="objNotificacion.keyPayload"></ion-input>
         </ion-item>
-        <ion-item  color="dark">
+        <ion-item >
             <ion-label>Segmento de Usuarios</ion-label>
             <ion-select [(ngModel)]="objNotificacion.tipoUsuario"
                         okText="Seleccionar" cancelText="Cancelar">
@@ -48,14 +48,15 @@
         </ion-button>
     </ion-list>
 
-    <ion-list *ngIf="!objNotificacion" color="dark">
+    <ion-list *ngIf="!objNotificacion"
+    >
         <ion-item-sliding *ngFor="let item of lstNotificacionModel; let i = index">
             <ion-item-options side="start">
                 <ion-item-option color="success" (click)="notificar(item)">
                     <ion-icon slot="icon-only" name="paper-plane-outline"></ion-icon>
                 </ion-item-option>
             </ion-item-options>
-            <ion-item color="dark">
+            <ion-item>
                 <ion-label>
                     <h2>{{item.titulo}}</h2>
                     <p>{{item.mensajeTitulo}}</p>

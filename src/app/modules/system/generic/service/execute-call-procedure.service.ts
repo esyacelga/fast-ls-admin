@@ -253,21 +253,14 @@ export class ExecuteCallProcedureService {
                     resolve(obj);
 
                 }, async httpError => {
-                    if (httpError.error && httpError.error.errors && httpError.error.errors.errors) {
-                        const mensaje = this.lectorError(httpError.error.errors.errors);
-                        await this.loading.dismiss('messagesService.loadMessagesOverview');
-                        if (httpError !== undefined && httpError.error !== undefined && httpError.error.errors !== undefined && mensaje === '') {
-                            this.presentToast(httpError.error.errors.message, COLOR_TOAST_ERROR);
-                        } else {
-                            this.presentToast(mensaje, COLOR_TOAST_ERROR);
-                        }
-                        reject(httpError.error.errors);
+                    const mensaje = this.lectorError(httpError.error.errors.errors);
+                    await this.loading.dismiss('messagesService.loadMessagesOverview');
+                    if (httpError !== undefined && httpError.error !== undefined && httpError.error.errors !== undefined && mensaje === '') {
+                        this.presentToast(httpError.error.errors.message, COLOR_TOAST_ERROR);
                     } else {
-                        await this.loading.dismiss('messagesService.loadMessagesOverview');
-                        this.presentToast('Ocurrio un error al ejecutar la solcitud', COLOR_TOAST_ERROR);
-                        reject('Error ala ejecuar la solicitud');
+                        this.presentToast(mensaje, COLOR_TOAST_ERROR);
                     }
-
+                    reject(httpError.error.errors);
                 });
             } else {
                 this.restConnection.genericPutRestFull(genericObject, urlRestService).subscribe(async resp => {
@@ -343,7 +336,6 @@ export class ExecuteCallProcedureService {
     private async presentToast(mensaje, color) {
         const toast = await this.notify.create({
             message: mensaje,
-            position: 'top',
             duration: DURATION_TOAST,
             color
         });

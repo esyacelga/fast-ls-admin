@@ -1,24 +1,25 @@
-<ion-header [translucent]="true" color="dark">
-    <ion-toolbar color="dark">
+<ion-header [translucent]="true">
+    <ion-toolbar>
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen color="dark">
+<ion-content fullscreen>
     <ion-list *ngIf="!contenedor && lstPedidoRemen.length>0">
         <ion-list-header>
-            <ion-item color="dark">
+            <ion-item>
                 <ion-label>Pedidos Recientes</ion-label>
             </ion-item>
         </ion-list-header>
-        <ion-item (click)="contenedor=item" *ngFor="let item of lstPedidoRemen | filtroPedido: 1" color="dark">
+        <ion-item (click)="contenedor=item" *ngFor="let item of lstPedidoRemen | filtroPedido: 1">
             <ion-avatar slot="start">
                 <img [src]="item.pedido.tipoUsuarioPerona.persona.picture|urlSanitizer">
             </ion-avatar>
             <ion-label>
-                <h2>{{item.pedido.tipoUsuarioPerona.persona.apellidos}}{{' '}}{{item.pedido.tipoUsuarioPerona.persona.nombres}}</h2>
+                <h2>{{item.pedido.tipoUsuarioPerona.persona.apellidos}}{{' '}}
+                    {{item.pedido.tipoUsuarioPerona.persona.nombres}}{{' '}}{{item.pedido.tipoUsuarioPerona.persona}} </h2>
                 <h3>Valor Total: {{' '}}{{item.total.toFixed(2)}}</h3>
                 <p> # {{' '}}{{item.pedido._id}}</p>
             </ion-label>
@@ -27,13 +28,13 @@
     </ion-list>
 
 
-    <ion-list *ngIf="!contenedor && lstPedidoRemen.length>0" color="dark">
+    <ion-list *ngIf="!contenedor && lstPedidoRemen.length>0">
         <ion-list-header>
-            <ion-item color="dark">
+            <ion-item>
                 <ion-label>Pedidos Anulados</ion-label>
             </ion-item>
         </ion-list-header>
-        <ion-item (click)="contenedor=item" *ngFor="let item of lstPedidoRemen | filtroPedido: 3" color="dark">
+        <ion-item (click)="contenedor=item" *ngFor="let item of lstPedidoRemen | filtroPedido: 3">
             <ion-avatar slot="start">
                 <img [src]="item.pedido.tipoUsuarioPerona.persona.picture|urlSanitizer">
             </ion-avatar>
@@ -45,13 +46,13 @@
         </ion-item>
     </ion-list>
 
-    <ion-list *ngIf="!contenedor && lstPedidoRemen.length>0" color="dark">
+    <ion-list *ngIf="!contenedor && lstPedidoRemen.length>0">
         <ion-list-header>
-            <ion-item color="dark">
+            <ion-item>
                 <ion-label>Pedidos Finalizados</ion-label>
             </ion-item>
         </ion-list-header>
-        <ion-item (click)="contenedor=item" *ngFor="let item of lstPedidoRemen | filtroPedido: 2" color="dark">
+        <ion-item (click)="contenedor=item" *ngFor="let item of lstPedidoRemen | filtroPedido: 2">
             <ion-avatar slot="start">
                 <img [src]="item.pedido.tipoUsuarioPerona.persona.picture|urlSanitizer">
             </ion-avatar>
@@ -63,7 +64,7 @@
         </ion-item>
     </ion-list>
 
-    <ion-list *ngIf="contenedor" color="dark">
+    <ion-list *ngIf="contenedor">
         <section>
             <ion-button (click)="contenedor = undefined" color="tertiary">
                 Cancelar
@@ -81,6 +82,7 @@
         </ion-item>
     </ion-list>
     <ion-item-group *ngIf="contenedor">
+
         <ion-item-sliding *ngFor="let item of contenedor.pedido.solicitudDetalle;let i = index">
             <ion-item>
                 <ion-badge color="secondary">{{(item.cantidad * item.unidadCosto).toFixed(2)}}</ion-badge>
@@ -88,7 +90,7 @@
                 <div slot="end">{{item.cantidad}}</div>
             </ion-item>
             <ion-item-options side="end">
-                <ion-item-option color="danger" (click)="eliminar(i)">
+                <ion-item-option color="danger">
                     <ion-icon slot="icon-only" name="trash"></ion-icon>
                 </ion-item-option>
             </ion-item-options>

@@ -5,11 +5,10 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {IonicModule} from '@ionic/angular';
 
-import {DatoPersonaPage} from './dato-persona.page';
 import {ComponentModule} from '../../../modules/components/component.module';
-
 import {ImageGeneratorComponent} from '../../../modules/components/image-generator/image-generator.component';
 import {PipesModule} from '../../../modules/pipes/pipes.module';
+import {DatoPersonaPage} from './dato-persona.page';
 
 const routes: Routes = [
     {
@@ -25,9 +24,9 @@ const routes: Routes = [
         CommonModule,
         FormsModule,
         IonicModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
     ],
-    declarations: [DatoPersonaPage, ImageGeneratorComponent]
+    declarations: [DatoPersonaPage, ImageGeneratorComponent],
 })
 
 export class DatoPersonaPageModule {
