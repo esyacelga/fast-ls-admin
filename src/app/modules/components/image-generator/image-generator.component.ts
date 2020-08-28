@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
-import {ImageGeneratorService} from './image-generator.service';
-import {Util} from '../../system/generic/classes/util';
 import {COLOR_TOAST_PRIMARY, COLOR_TOAST_WARNING} from '../../system/generic/classes/constant';
+import {Util} from '../../system/generic/classes/util';
+import {ImageGeneratorService} from './image-generator.service';
 
 @Component({
     selector: 'app-image-generator',
@@ -10,17 +10,17 @@ import {COLOR_TOAST_PRIMARY, COLOR_TOAST_WARNING} from '../../system/generic/cla
     styleUrls: ['./image-generator.component.scss'],
 })
 export class ImageGeneratorComponent implements OnInit {
-    @Input() ruta: string;
-    @Input() nombreImagen: string;
-    imagen: string;
+    @Input() public ruta: string;
+    @Input() public nombreImagen: string;
+    public imagen: string;
 
     constructor(private camera: Camera, private svrImage: ImageGeneratorService, private svr: Util) {
     }
 
-    ngOnInit() {
+    public ngOnInit() {
     }
 
-    camara() {
+    public camara() {
         const options: CameraOptions = {
             quality: 60,
             destinationType: this.camera.DestinationType.FILE_URI,
@@ -33,7 +33,7 @@ export class ImageGeneratorComponent implements OnInit {
         this.procesarImagen(options);
     }
 
-    libreria() {
+    public libreria() {
         const options: CameraOptions = {
             quality: 60,
             destinationType: this.camera.DestinationType.FILE_URI,
@@ -45,7 +45,7 @@ export class ImageGeneratorComponent implements OnInit {
         this.procesarImagen(options);
     }
 
-    async procesarImagen(options: CameraOptions) {
+    public async procesarImagen(options: CameraOptions) {
         console.error('Revisar Foto');
         this.camera.getPicture(options).then((imageData) => {
             // @ts-ignore
@@ -62,6 +62,5 @@ export class ImageGeneratorComponent implements OnInit {
             // Handle error
         });
     }
-
 
 }

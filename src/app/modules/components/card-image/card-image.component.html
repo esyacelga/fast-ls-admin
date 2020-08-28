@@ -1,6 +1,6 @@
 <div class="post">
   <div class="image-slide"
-             [style]=" (objArticulo.imgs[0] | imagen: objArticulo.articuloSegmento ) | domSanitizer ">
+             [style]=" (objArticulo.img[0] | imagen: objArticulo.articuloSegmento ) | domSanitizer ">
   </div>
   <!--<ion-slides pager="true" *ngIf="objArticulo.imgs.length > 1">
     <ion-slide *ngFor="let img of objArticulo.imgs"

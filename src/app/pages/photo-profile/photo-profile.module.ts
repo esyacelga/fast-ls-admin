@@ -1,11 +1,10 @@
-import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
-import {PhotoProfilePage} from './photo-profile.page';
-import {PipesModule} from '../../modules/pipes/pipes.module';
 import {ImageGeneratorComponent} from '../../modules/components/image-generator/image-generator.component';
-
+import {PipesModule} from '../../modules/pipes/pipes.module';
+import {PhotoProfilePage} from './photo-profile.page';
 
 @NgModule({
     imports: [
@@ -14,7 +13,7 @@ import {ImageGeneratorComponent} from '../../modules/components/image-generator/
         IonicModule,
         PipesModule,
     ],
-    declarations: [PhotoProfilePage, ImageGeneratorComponent]
+    declarations: [ImageGeneratorComponent, PhotoProfilePage],
 })
 export class PhotoProfilePageModule {
 }

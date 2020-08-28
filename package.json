@@ -41,7 +41,7 @@
     "cordova-plugin-telerik-imagepicker": "^2.3.3",
     "cordova-sqlite-storage": "^5.0.1",
     "core-js": "^2.5.4",
-    "onesignal-cordova-plugin": "^2.11.0",
+    "onesignal-cordova-plugin": "^2.11.1",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
